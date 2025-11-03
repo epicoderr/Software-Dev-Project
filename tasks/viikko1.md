@@ -1,2 +1,2 @@
-komentorivi ja versionhallinta ovat jo tuttuja
+Comment lines and version control are already familiar
 
