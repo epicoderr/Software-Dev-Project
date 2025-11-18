@@ -1,5 +1,16 @@
-.pytest_cache/
-__pycache__/
-.coverage
-htmlcov/
+#copied from example project
 
+.vscode
+.DS_Store
+.coverage
+.pytest_cache
+htmlcov
+__pycache__
+*.py[cod]
+*$py.class
+
+# data files
+data/database.sqlite
+data/todos.csv
+data/test-database.sqlite
+data/test-todos.csv
