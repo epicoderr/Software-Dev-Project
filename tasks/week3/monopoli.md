@@ -35,7 +35,7 @@
 
     %% Normaaleihin katuihin liittyvät tiedot
     Katu : nimi
-    Katu : talojenMaara (0..4)
+    Katu : talojenMäärä (0..4)
     Katu : hotelli (0..1)
     Katu "0..1" -- "1" Pelaaja : omistaja
 
