@@ -9,5 +9,5 @@ class TestSolitaire(unittest.TestCase):
 
     def test_initial_board_has_forty_mines(self):
         # Counts all the mines on the board and sees if its exactly 40
-        tile_count = sum(1 for row in self.game.board for tile in row if tile == "2")
+        tile_count = sum(1 for row in self.game.board for tile in row if tile["isMine"] == True)
         self.assertEqual(tile_count, self.game.mines)
