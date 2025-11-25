@@ -20,3 +20,7 @@ def coverage(ctx):
 @task(coverage)
 def coverage_report(ctx):
     ctx.run(" poetry run coverage html", pty=not is_windows)
+
+@task
+def pylint(ctx):
+    ctx.run("poetry run pylint src", pty=not is_windows)

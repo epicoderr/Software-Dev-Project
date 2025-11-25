@@ -11,3 +11,5 @@
 - Each cell now has properties to make them easier to manage
 - Functionalities of revealing and flagging cells have been developed
 - Added a text based display as a placeholder
+- Tested revealing and adding flags to cells
+- Tested that adjacent mines are counted correctly

@@ -1,7 +1,7 @@
 from game.minesweeper import Minesweeper
 
 def main():
-    # Initializes the game, so creates 16 empty cells then generates 2 randomly
+    # Initializes the game, so creates the board then 40 mines
     game_board = Minesweeper()
     game_board.create_board()
     game_board.create_puzzle()
@@ -20,8 +20,8 @@ def main():
 
         choice = input("Enter your choice: ").strip()
 
-        # The directions just display the board after the choice
-        # The AI ones have a little text explaining what move was chosen
+        # Choices 1 and 2 were implemented with the help of AI
+        # This is only a temporary solution for testing purposes
         if choice == "1":
             while True:
                 try:
@@ -29,7 +29,9 @@ def main():
                     row, column = map(int, pos.split(","))
                     game_board.reveal_cell(row, column)
                     game_board.display()
-                    break  
+                    if game_board.board[row][column]["isMine"]:
+                        print("The game is over")
+                    break
 
                 except ValueError:
                     print("Invalid input. Please enter two numbers like: 3,4")
@@ -43,7 +45,7 @@ def main():
                     row, column = map(int, pos.split(","))
                     game_board.add_flag(row, column)
                     game_board.display()
-                    break  
+                    break
 
                 except ValueError:
                     print("Invalid input. Please enter two numbers like: 3,4")
