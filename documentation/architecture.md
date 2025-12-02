@@ -26,3 +26,12 @@ classDiagram
     Minesweeper "1" *-- "*" Cell : includes
 
 ```
+
+```mermaid
+sequenceDiagram
+    participant Main
+    participant Game as Minesweeper 
+    participant UI
+    participant Cell
+
+```

@@ -7,9 +7,11 @@ class Minesweeper:
         self.revealed = 0
         self.board = []
         self.size = size
+        self.game_over = False
 
     def new_game(self):
         # Initializes a new game
+        self.board = []
         self.create_board()
         self.create_puzzle()
         self.number_cells()
@@ -39,32 +41,49 @@ class Minesweeper:
             self.board[r][c]["isMine"] = True
 
     def reveal_cell(self, r, c):
-        # Will need to implement sometimes revealing more tiles next to it
-        self.board[r][c]["isRevealed"] = True
+        # Reveals the tile and then all other tiles with no mine neighbors
+        # First reveal will have to be safe, will implement later
+        rows = len(self.board)
+        cols = len(self.board[0])
+        if not (0 <= r < rows and 0 <= c < cols):
+            return
 
-    def add_flag(self, r, c):
-        self.board[r][c]["isFlagged"] = True
+        cell = self.board[r][c]
 
-    def display(self):
-        # Used ai for this, its just a text based display to test things out for now
-        print("    " + " ".join(f"{i:2}" for i in range(self.size)))
-        print("   " + "---" * self.size)
+        if cell["isRevealed"] or cell["isFlagged"]:
+            return
 
-        for r in range(self.size):
-            row_str = f"{r:2} |"
-            for c in range(self.size):
-                form = self.check_form(r, c)
+        if cell["isMine"]:
+            cell["isRevealed"] = True
+            self.game_over = True
+            return
 
-                if form == "hidden":
-                    row_str += " ? "
-                elif form == "flagged":
-                    row_str += " F "
-                elif form == "mine":
-                    row_str += " * "
-                else:
-                    row_str += f" {form if form > 0 else ' '} "
-            print(row_str)
+        cell["isRevealed"] = True
 
+        if cell["neighborCount"] > 0:
+            return
+
+
+        directions = [
+        (-1,  0),
+        ( 1,  0),
+        ( 0, -1),
+        ( 0,  1),
+        (-1, -1),
+        (-1,  1),
+        ( 1, -1),
+        ( 1,  1),
+        ]
+
+        for dr, dc in directions:
+            nr, nc = r + dr, c + dc
+            self.reveal_cell(nr, nc)
+
+    def toggle_flag(self, r, c):
+        if self.board[r][c]["isFlagged"]:
+            self.board[r][c]["isFlagged"] = False
+        else:
+            self.board[r][c]["isFlagged"] = True
 
     def number_cells(self):
         # Computes how many mines are nearby for each non-mine cell
@@ -95,15 +114,3 @@ class Minesweeper:
                 if self.board[nr][nc]["isMine"]:
                     count += 1
         self.board[r][c]["neighborCount"] = count
-
-    def check_form(self, r, c):
-        # Checks the properties of a cell in order to find the correct way to display it
-        cell = self.board[r][c]
-        if not cell["isRevealed"]:
-            if cell["isFlagged"]:
-                return "flagged"
-            return "hidden"
-        if cell["isMine"]:
-            return "mine"
-
-        return self.board[r][c]["neighborCount"]

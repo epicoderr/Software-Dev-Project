@@ -36,9 +36,7 @@ load-plugins=
 # Pickle collected data for later comparisons.
 persistent=yes
 
-# When enabled, pylint would attempt to guess common misconfiguration and emit
-# user-friendly hints instead of false-positive error messages.
-suggestion-mode=yes
+# removed suggestion-mode as it was causing an error
 
 # Allow loading of arbitrary C extensions. Extensions are imported into the
 # active Python interpreter and may run arbitrary code.
@@ -517,5 +515,5 @@ min-public-methods=0
 
 # Exceptions that will emit a warning when being caught. Defaults to
 # "BaseException, Exception".
-overgeneral-exceptions=BaseException,
-                       Exception
+# Changed to builtins. because there was a warning
+overgeneral-exceptions=builtins.BaseException,builtins.Exception
