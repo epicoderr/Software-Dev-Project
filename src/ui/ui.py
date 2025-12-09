@@ -1,5 +1,6 @@
 import pygame
 
+# Most of these values I just asked AI what would be good
 CELL_SIZE = 30  
 BOARD_SIZE = 16 
 WINDOW_WIDTH = BOARD_SIZE * CELL_SIZE
@@ -13,7 +14,16 @@ RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 
 def draw_board(screen, game_board, font):
-    # Basically just helps create the board for the player
+    """Renders the current state of the Minesweeper board onto the Pygame screen.
+
+    It iterates through every cell, determining its appearance based on its
+    'isRevealed', 'isMine', 'isFlagged', and 'neighborCount' status.
+
+    Args:
+        screen: The Pygame surface to draw the board onto.
+        game_board: The instance of the Minesweeper game containing the board state.
+        font: The font object used for rendering neighbor counts.
+    """
     # Might use assets later but this is sufficient for now
     for r in range(BOARD_SIZE):
         for c in range(BOARD_SIZE):
@@ -23,7 +33,7 @@ def draw_board(screen, game_board, font):
 
             rect = pygame.Rect(x, y, CELL_SIZE, CELL_SIZE)
             
-            # the drawings were made with ai help
+            # The drawings were made with ai help
             if cell["isRevealed"]:
                 pygame.draw.rect(screen, LIGHT_GRAY, rect)
                 pygame.draw.rect(screen, DARK_GRAY, rect, 1) 

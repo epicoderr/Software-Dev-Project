@@ -1,5 +1,5 @@
 # Intermediate Studies Project: Minesweeper App
-This application allows the user to play the game minesweeper. The player uses they mouse to reveal and flag tiles until they fully clear the board or lose because they found a mine.
+This application allows the user to play the game minesweeper. The player uses they mouse to reveal and flag tiles until they fully clear the board or lose because they found a mine. You can left click to reveal a mine, right click to flag a mine and you can press r to restart.
 
 # Documentation
 - [Specification Document](documentation/specification_document.md)

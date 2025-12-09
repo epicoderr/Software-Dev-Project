@@ -20,3 +20,9 @@
 - Revealing cells now reveals other non-mine adjacent cells
 - Added a game over property if the user clicks on a mine
 - Added tests for revealing cells and new_game
+
+## Week 6
+- Added functionality of a safe first click when starting
+- Changed around some of the logic and fixed tests accordingly
+- Added a restart button (r) for the user
+

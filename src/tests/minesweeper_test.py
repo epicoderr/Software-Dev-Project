@@ -15,11 +15,11 @@ class TestMinesweeper(unittest.TestCase):
             if 0 <= r < self.game.size and 0 <= c < self.game.size:
                 self.game.board[r][c]["isMine"] = True
         self.game.number_cells()
+        self.game.first_click = False
 
     def test_initial_board_has_forty_mines(self):
         # Counts all the mines on the board and sees if its exactly 40
-        self.game.create_puzzle()
-        self.game.number_cells()
+        self.game.reveal_cell(0,0)
 
         tile_count = sum(1 for row in self.game.board for tile in row if tile["isMine"])
         self.assertEqual(tile_count, self.game.mines)
@@ -75,5 +75,3 @@ class TestMinesweeper(unittest.TestCase):
         self.assertFalse(self.game.board[2][0]["isRevealed"])
         self.assertFalse(self.game.board[2][1]["isRevealed"])
         self.assertFalse(self.game.board[2][2]["isRevealed"])
-
-    

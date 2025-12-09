@@ -7,5 +7,7 @@
 |  25.11  |  100 min  | Added tests, used pylint and other small improvements          |
 |  1.12  |  170 min  | Added UI, improved revealing cells and added game over condition          |
 |  2.12  |  80 min  | Added tests, used pylint and other small improvements          |
+|  8.12  |  40 min  | Added safe first click functionality and restart button        |
+|  9.12  |  30 min  | Fixed some tests and other small improvements          |
 
-## TOTAL: 620 min
+## TOTAL: 690 min
