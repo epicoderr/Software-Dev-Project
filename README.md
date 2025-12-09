@@ -6,11 +6,11 @@ This application allows the user to play the game minesweeper. The player uses t
 - [Time Tracking Document](documentation/time_tracking.md)
 - [Changelog Document](documentation/changelog.md)
 - [Architecture Document](documentation/architecture.md)
+- [User Guide](documentation/user_guide.md)
 
 # Python version requirements
 This application was tested on python version 3.12.10. 3.12 in general should be fine, but newer versions lack pygame functionality, and older ones may have other problems.
 
-# User Guide
 - Use **poetry install** to install dependencies
 - Use **poetry run invoke start** to run the app
 - Use **poetry run invoke test** and **poetry run invoke coverage-report** to run tests
