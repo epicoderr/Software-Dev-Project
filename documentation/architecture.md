@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes the structure and logic of a Minesweeper game implemented in Python using Pygame. The game follows a modular architecture separating game logic from the user interface, enabling clarity, maintainability, and potential future extensions.
+This document describes the structure and logic of a Minesweeper game implemented in Python using Pygame. The game follows a modular architecture separating game logic from the user interface.
 
 ## Structure
 
@@ -109,5 +109,6 @@ sequenceDiagram
     Main->>UI: draw_board()
 
 ```
+
 
 
