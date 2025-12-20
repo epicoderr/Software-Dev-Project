@@ -9,5 +9,6 @@
 |  2.12  |  80 min  | Added tests, used pylint and other small improvements          |
 |  8.12  |  40 min  | Added safe first click functionality and restart button        |
 |  9.12  |  30 min  | Fixed some tests and other small improvements          |
+|  20.12  |  120 min  | Made the project structure more modular and changed logic accordingly          |
 
-## TOTAL: 690 min
+## TOTAL: 810 min

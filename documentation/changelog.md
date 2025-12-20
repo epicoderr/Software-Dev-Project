@@ -26,3 +26,9 @@
 - Changed around some of the logic and fixed tests accordingly
 - Added a restart button (r) for the user
 
+## Week 7/Final Changes
+- Added controls for the user to see on the bottom of thr display
+- Changed project structure to be more modular
+- Now classes for Cell and Board
+- Changed logic for the game itself and testing accordingly
+

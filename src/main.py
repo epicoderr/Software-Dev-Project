@@ -3,7 +3,7 @@
 import sys
 import pygame
 from game.minesweeper import Minesweeper
-from ui.ui import draw_board, CELL_SIZE, BOARD_SIZE, WINDOW_WIDTH, WINDOW_HEIGHT, WHITE
+from ui.ui import draw_board, draw_helper, CELL_SIZE, BOARD_SIZE, WINDOW_WIDTH, WINDOW_HEIGHT, WHITE
 
 def main():
     """Initializes the Pygame environment and runs the main Minesweeper game loop.
@@ -34,8 +34,9 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_x, mouse_y = event.pos
 
-                col = mouse_x // CELL_SIZE
-                row = mouse_y // CELL_SIZE
+                if mouse_y < BOARD_SIZE * CELL_SIZE:
+                    col = mouse_x // CELL_SIZE
+                    row = mouse_y // CELL_SIZE
 
                 if 0 <= row < BOARD_SIZE and 0 <= col < BOARD_SIZE:
                     if event.button == 1:
@@ -46,12 +47,13 @@ def main():
                             sys.exit()
 
                     elif event.button == 3:
-                        cell = game_board.board[row][col]
-                        if not cell["isRevealed"]:
+                        cell = game_board.board.grid[row][col]
+                        if not cell.is_revealed:
                             game_board.toggle_flag(row, col)
 
         screen.fill(WHITE)
         draw_board(screen, game_board, font)
+        draw_helper(screen, font)
 
         pygame.display.flip()
         clock.tick(60)

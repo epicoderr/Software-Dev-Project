@@ -6,9 +6,11 @@ This document describes the structure and logic of a Minesweeper game implemente
 
 ## Structure
 
-The project consists of three main components:
+The project consists of four main components:
 
-Game Logic (Minesweeper): Handles the creation of the board, placement of mines, cell revealing, and game rules.
+Game Logic (Minesweeper): Handles cell revealing, toggling flags and game rules.
+
+Board: Handles creation of the board, placement of mines
 
 Cells (Cell): Represent individual squares on the board, storing mine status, neighbor counts, and flag/reveal states.
 
@@ -44,22 +46,28 @@ classDiagram
     class Minesweeper {
         new_game()
         create_board()
-        create_puzzle()
-        number_cells()
         reveal_cell(r, c)
         add_flag(r, c)
         display()
     }
 
+    class Board {
+        create_puzzle()
+        number_cells()
+        check_mines()
+        neighbors(r, c)
+        in_bounds(r, c)
+    }
+
     class Cell {
-        <<dictionary>>
         bool isMine
         int neighborCount
         bool isFlagged
         bool isRevealed
     }
     
-    Minesweeper "1" *-- "*" Cell : includes
+    Minesweeper "1" *-- "1" Board : owns
+    Board "1" *-- "*" Cell : contains
 
 ```
 ## Sequence Diagram
@@ -67,16 +75,18 @@ classDiagram
 sequenceDiagram
     participant Main
     participant Game as Minesweeper 
+    participant Board
     participant UI
     participant Cell
 
 %% --- Game Initialization ---
-    Main->>Game: __init__(size=16)
+    Main->>Game: __init__(size, mines)
     Main->>Game: new_game()
     activate Game
-    Game->>Game: create_board()
-    Game->>Game: create_puzzle()
-    Game->>Game: number_cells()
+    Game->>Board: __init__(size, mine_count)
+    Board->>Cell: create all Cell instances
+    Game->>Board:: create_puzzle()
+    Game->>Board:: number_cells()
     deactivate Game
     Main->>UI: pygame.init()
     Main->>UI: draw_board(screen, game_board, font)
@@ -84,15 +94,17 @@ sequenceDiagram
     %% --- Player Clicks (Left/Reveal) ---
     Main->>Game: reveal_cell(r, c)
     activate Game
-    Game->>Cell: check["isRevealed"], ["isFlagged"]
+    Game->>Board: access cell at (r, c)
+    Board->>Cell: check is_revealed, is_flagged
     alt Hit Mine
-        Game->>Game: cell["isRevealed"] = True
+    Game->>Game: cell.is_mine = True
+        Game->>Game: cell.is_revealed = True
         Game-->>Main: Return (Game Over)
     else Safe Reveal (Neighbor Count > 0)
-        Game->>Game: cell["isRevealed"] = True
+        Game->>Game: cell.is_revealed = True
         Game-->>Main: Return
     else Safe Reveal (Neighbor Count = 0)
-        Game->>Game: cell["isRevealed"] = True
+        Game->>Game: cell.is_revealed = True
         loop for dr, dc in directions
             Game->>Game: reveal_cell(nr, nc)
         end
@@ -104,7 +116,8 @@ sequenceDiagram
     %% --- Player Clicks (Right/Flag) ---
     Main->>Game: toggle_flag(r, c)
     activate Game
-    Game->>Cell: check["isFlagged"]
+    Game->>Board: access cell at (r, c)
+    Cell->>Cell: toggle is_flagged
     deactivate Game
     Main->>UI: draw_board()
 
