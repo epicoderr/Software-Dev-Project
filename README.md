@@ -17,4 +17,4 @@ This application was tested on python version 3.12.10. 3.12 in general should be
 - Use **poetry run invoke pylint** to check code quality
 
 # Latest Release
-- [Week 6](https://github.com/epicoderr/Software-Dev-Project/releases/tag/week6)
+- [Final](https://github.com/epicoderr/Software-Dev-Project/releases/tag/Final)
