@@ -1,7 +1,7 @@
 import pygame
 
 # Most of these values I just asked AI what would be good
-CELL_SIZE = 30  
+CELL_SIZE = 40  
 BOARD_SIZE = 16 
 HELPER_HEIGHT = 40
 WINDOW_WIDTH = BOARD_SIZE * CELL_SIZE
@@ -23,7 +23,7 @@ def draw_board(screen, game_board, font):
     Args:
         screen: The Pygame surface to draw the board onto.
         game_board: The instance of the Minesweeper game containing the board state.
-        font: The font object used for rendering neighbor counts.
+        font: The font object used for rendering neighbor counts, and helper.
     """
     for r in range(BOARD_SIZE):
         for c in range(BOARD_SIZE):
@@ -59,7 +59,7 @@ def draw_helper(screen, game_board, font):
     Args:
         screen: The Pygame surface to draw the text onto.
         game_board: The instance of the Minesweeper game containing the board state.
-        font: The font object used for rendering neighbor counts.
+        font: The font object used for rendering neighbor counts and helper.
     """
     rect = pygame.Rect(0, BOARD_SIZE * CELL_SIZE, WINDOW_WIDTH, HELPER_HEIGHT)
     pygame.draw.rect(screen, LIGHT_GRAY, rect)

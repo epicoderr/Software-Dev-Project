@@ -28,6 +28,7 @@
 
 ## Week 7/Final Changes
 - Added controls for the user to see on the bottom of thr display
+- Added flag counter for improved clarity
 - Changed project structure to be more modular
 - Now classes for Cell and Board
 - Changed logic for the game itself and testing accordingly

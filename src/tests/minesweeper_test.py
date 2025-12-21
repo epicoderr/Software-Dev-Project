@@ -30,10 +30,12 @@ class TestMinesweeper(unittest.TestCase):
         self.assertTrue(self.game.board.grid[1][1].is_revealed)
 
     def test_toggle_flag(self):
+        # Tests base case and other scenarios
+        # Before first click/at the end should not work
         self.game.toggle_flag(1,1)
         self.assertFalse(self.game.board.grid[1][1].is_flagged)
         self.game.first_click = False
-        
+
         self.game.toggle_flag(1,1)
         self.assertTrue(self.game.board.grid[1][1].is_flagged)
 
@@ -107,7 +109,7 @@ class TestMinesweeper(unittest.TestCase):
         mock_print.assert_called_with("All safe cells revealed!")
 
     def test_out_of_bounds_inputs(self):
-        """Tests that reveal_cell and toggle_flag handle invalid coordinates gracefully."""
+        # Tests that reveal_cell and toggle_flag handle invalid coordinates correctly
         self.game.reveal_cell(-1, 0)
         self.game.reveal_cell(0, -1)
         self.game.reveal_cell(self.game.size, self.game.size)

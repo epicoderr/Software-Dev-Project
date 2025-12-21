@@ -21,7 +21,7 @@ User Interface (UI): Handles rendering the board using Pygame and user interacti
 
 New Game: Resets the board.
 
-Board Creation: Populates the board with empty Cell dictionaries.
+Board Creation: Populates the board with cells.
 
 Mine Placement: Randomly assigns mines to cells while ensuring the first clicked cell is safe.
 

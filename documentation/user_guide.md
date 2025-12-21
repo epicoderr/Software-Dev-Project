@@ -1,5 +1,5 @@
 ## User Guide
-- Use **poetry install** to install dependencies
+- Use **poetry install** or **poetry install --no-root** to install dependencies
 - Use **poetry run invoke start** to run the app
 - Use **poetry run invoke test** and **poetry run invoke coverage-report** to run tests
 - Use **poetry run invoke pylint** to check code quality
