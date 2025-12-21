@@ -12,7 +12,7 @@ The core logic of the game within the Minesweeper class is tested using the Test
 
 Test coverage is 100%
 
-<img width="1880" height="770" alt="coverage sdp" src="https://github.com/user-attachments/assets/4eb9fc5f-e625-4f94-8a93-ba3b72dfe43a" />
+<img width="1888" height="708" alt="image" src="https://github.com/user-attachments/assets/cf422252-a42d-41df-b325-1429b65fb98d" />
 
 This can be verified by running **poetry run invoke coverage-report**
 
