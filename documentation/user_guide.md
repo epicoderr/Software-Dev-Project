@@ -5,7 +5,8 @@
 - Use **poetry run invoke pylint** to check code quality
 
 ## Gameplay Guide
-<img width="400" height="400" alt="minesweeper window" src="https://github.com/user-attachments/assets/6a79aed9-37d5-4b1d-98a9-6eb905670be8" />
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/2710d3a8-9ccd-4105-9afb-768ef9f55538" />
+
 
 - Above is the game board the user sees
 - Left click allows you to reveals a cell
