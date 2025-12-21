@@ -75,7 +75,7 @@ class Board:
 
     def in_bounds(self, r, c):
         return 0 <= r < self.size and 0 <= c < self.size
-    
+
     def neighbors(self, r, c):
         directions = [
         (-1,  0),

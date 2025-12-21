@@ -20,12 +20,19 @@ class Minesweeper:
         """
         self.mines = mines
         self.size = size
+        self.board = None
+        self.revealed = 0
+        self.flags = 0
+        self.game_over = False
+        self.first_click = True
+
         self.new_game()
 
     def new_game(self):
         """Initializes a new game board and resets the first_click flag."""
         self.board = Board(self.size, self.mines)
         self.revealed = 0
+        self.flags = 0
         self.game_over = False
         self.first_click = True
 
@@ -82,5 +89,9 @@ class Minesweeper:
 
         if self.board.grid[r][c].is_flagged:
             self.board.grid[r][c].is_flagged = False
+            self.flags -= 1
         else:
+            if self.flags >= self.mines:
+                return
             self.board.grid[r][c].is_flagged = True
+            self.flags += 1

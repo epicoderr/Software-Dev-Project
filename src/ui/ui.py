@@ -53,18 +53,21 @@ def draw_board(screen, game_board, font):
                     pygame.draw.polygon(screen, RED, [(x + CELL_SIZE // 4, y + CELL_SIZE // 4), (x + 3 * CELL_SIZE // 4, y + CELL_SIZE // 2), (x + CELL_SIZE // 4, y + 3 * CELL_SIZE // 4)])
             # AI help ends here
 
-def draw_helper(screen, font):
+def draw_helper(screen, game_board, font):
     """Renders the controls of minesweeper for the user as text
 
     Args:
         screen: The Pygame surface to draw the text onto.
+        game_board: The instance of the Minesweeper game containing the board state.
         font: The font object used for rendering neighbor counts.
     """
     rect = pygame.Rect(0, BOARD_SIZE * CELL_SIZE, WINDOW_WIDTH, HELPER_HEIGHT)
     pygame.draw.rect(screen, LIGHT_GRAY, rect)
     pygame.draw.rect(screen, DARK_GRAY, rect, 2)
 
-    text = "Left Click = Reveal    Right Click = Flag    R = Restart"
+    flags_left = game_board.mines - game_board.flags
+
+    text = f"Flags: {flags_left}    Left Click = Reveal    Right Click = Flag    R = Restart"
     text_surface = font.render(text, True, BLACK)
 
     text_rect = text_surface.get_rect(

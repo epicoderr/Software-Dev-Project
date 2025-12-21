@@ -33,8 +33,14 @@ class TestMinesweeper(unittest.TestCase):
         self.game.toggle_flag(1,1)
         self.assertFalse(self.game.board.grid[1][1].is_flagged)
         self.game.first_click = False
+        
         self.game.toggle_flag(1,1)
         self.assertTrue(self.game.board.grid[1][1].is_flagged)
+
+        self.game.toggle_flag(1,1)
+        self.assertFalse(self.game.board.grid[1][1].is_flagged)
+
+        self.game.flags = self.game.mines
         self.game.toggle_flag(1,1)
         self.assertFalse(self.game.board.grid[1][1].is_flagged)
     
